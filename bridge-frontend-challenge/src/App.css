@@ -1,0 +1,64 @@
+.App {
+  text-align: center;
+
+}
+
+.App-logo {
+  height: 15vmin;
+}
+
+.Button {
+  margin: 1em;
+  width: 7em;
+  height: 3.5em;
+  background-color: #2e7dff;
+  color: #fff;
+  border-radius: .5em;
+  border: #2e7dff;
+}
+
+.Calculation {
+  padding: 1em;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 50vw;
+}
+
+.Input-wrapper {
+  padding: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50vw;
+}
+
+.Number-input {
+  padding: 1em;
+  border-radius: .5em;
+  color: #000;
+}
+
+.App-body {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.Body {
+  width: 50vw;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  justify-content: center;
+  font-size: calc(5px + 2vmin);
+  color: #000;
+}
+
