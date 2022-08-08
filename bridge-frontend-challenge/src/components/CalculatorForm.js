@@ -1,13 +1,11 @@
 import React, {useState} from "react";
 
 const NumberInput = (props) => {
-  const [k, setK] = useState(0);
+  const [k, setK] = useState(null);
 
   const calculateHandler = (event) => {
     event.preventDefault();
-    setK(null);
-    props.onCalculate(k)
-
+    props.onCalculate(k);
   };
 
   const inputChangeHandler = (event) => {
@@ -20,7 +18,8 @@ const NumberInput = (props) => {
         className="Number-input"
         type="number"
         placeholder="Digite um valor para k"
-        // HTML event
+        value={k}
+        min='1'
         onChange={inputChangeHandler}
       />
       <button className="Button" type="submit">
