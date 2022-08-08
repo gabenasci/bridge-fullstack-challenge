@@ -1,6 +1,7 @@
 package com.gabenasci.bridgebackendchallenge.controller;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,11 +20,18 @@ public class Controller {
 //		return Arrays.asList(new Result(1));
 //	}
 	
-	@PostMapping("/getresult")
-	public int calculateResult(String input) {
+	@PostMapping("/result")
+	public HashMap<String, String> calculateResult(String input) {
 		System.out.println("INPUT: "+input);
 		int k = Integer.parseInt(input);
-		System.out.println(k);
-		return Calculation.calculateResult(Calculation.calculateNAndDivisors(k));
+		HashMap<String, String> response = new HashMap<>();
+		long startTime = System.currentTimeMillis();
+		int result = Calculation.calculateResult(Calculation.calculateNAndDivisors(k));
+		System.out.println("RESULT: "+result+"\n");
+		long endTime = System.currentTimeMillis();
+		long elapsedTime = endTime-startTime;
+		response.put("result", Integer.toString(result));
+		response.put("time", Long.toString(elapsedTime));
+		return response;
 	}
 }
