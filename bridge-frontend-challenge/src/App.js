@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import logo from "./logo-bridge.png";
 import "./App.css";
 import CalculatorForm from "./components/CalculatorForm";
-// import CalculatedResult from "./components/CalculatedResult";
 import CalculatedResult from "./components/CalculatedResult";
 
 function App() {
@@ -16,9 +15,16 @@ function App() {
   }
 
   const onCalculateHandler = (k) => {
+    let request = { 
+      "k" : k,
+      "result": null,
+      "time": null
+    };
+    console.log(JSON.stringify(request));
     setLoading(true);
-    fetch("http://localhost:8080/result?input=" + k, {
+    fetch("http://localhost:8080/calculate?input=" + k, {
       method: "POST",
+      body: JSON.stringify(request),
       headers: {
         "Content-Type": "application/json",
       },
