@@ -1,6 +1,6 @@
 # Bridge Fullstack Challenge
 
-Este desafio foi desenvolvido utilizando *React.js* no *frontend* e *Springboot* (Java) no *backend*. Pelo escopo e simplicidade do projeto, não foram adotadas bibliotecas além das padrão.
+Este desafio foi desenvolvido utilizando *React.js* no *frontend* e *Springboot* (Java) no *backend*. Pelo escopo e simplicidade do projeto, não foram adotadas bibliotecas adicionais (al.
 
 Para executar o projeto, primeiramente execute localmente o *backend*.
 
