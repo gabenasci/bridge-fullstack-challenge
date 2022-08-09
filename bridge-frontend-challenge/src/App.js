@@ -9,26 +9,40 @@ function App() {
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
   const [responseTime, setResponseTime] = useState(null);
+  const [error, setError] = useState(null);
 
   const resetLoading = () => {
     setLoading(false)
   }
 
-  const onCalculateHandler = async (k) => {
-    console.log("BUTTON PRESS");
+  const onCalculateHandler = (k) => {
     setLoading(true);
-    await fetch("http://localhost:8080/result?input=" + k, {
+    fetch("http://localhost:8080/result?input=" + k, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
     })
-      .then((response) => response.json())
+      .then((response) => {
+        // console.log(response);
+        if(!response.ok && k) {
+          throw Error('Não foi possível comunicar com a API de cálculo.');
+        }
+        return response.json();
+      })
       .then((data) => {
         setResult(data.result); 
         setResponseTime(data.time);
+        setLoading(false);
+        setError(null);
+        if (!k) {
+          throw Error('Insira um valor válido para k.');
+        }
       })
-      setLoading(false);
+      .catch(err => {
+        setLoading(false);
+        setError(err.message);
+      })
   };
 
   return (
@@ -44,6 +58,7 @@ function App() {
           </p>
           <CalculatorForm onCalculate={onCalculateHandler}></CalculatorForm>
           <CalculatedResult result={result} loading={loading} onResult={resetLoading} time={responseTime} />
+          { error && <div>{ error }</div>}
         </div>
       </body>
     </div>

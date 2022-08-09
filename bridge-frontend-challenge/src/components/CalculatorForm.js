@@ -18,7 +18,6 @@ const NumberInput = (props) => {
         className="Number-input"
         type="number"
         placeholder="Digite um valor para k"
-        value={k}
         min='1'
         onChange={inputChangeHandler}
       />
