@@ -6,7 +6,7 @@ Para executar o projeto, primeiramente execute localmente o *backend*.
 
     cd bridge-backend-challenge
     ./mvnw spring-boot:run
-Ao executar o *backend*, a API estará disponível via http://localhost:8080/result.
+Ao executar o *backend*, a API estará disponível via http://localhost:8080/results e http://localhost:8080/calculate.
 
 Agora podemos executar o *frontend* localmente, em outro terminal:
 
