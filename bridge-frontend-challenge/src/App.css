@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-
 }
 
 .App-logo {
@@ -13,8 +12,21 @@
   height: 3.5em;
   background-color: #2e7dff;
   color: #fff;
-  border-radius: .5em;
+  border-radius: 0.5em;
   border: #2e7dff;
+}
+
+.Calc {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  min-width: 40vw;
+}
+
+.Row {
+  display: flex;
+  padding: 0.5em;
+  font-size: 0.8em;
 }
 
 .Calculation {
@@ -27,13 +39,86 @@
   height: 50vh;
 }
 
-.Spinner{
+.Navbar {
+  margin: 0;
+  display: flex;
+  height: 10vh;
+  justify-content: space-between;
+  align-items: center;
+  background-color:#282c34;
+  padding-right: 66px;
+  padding-left: 66px;
+
+}
+
+.Navbar h3 {
+  font-size: 2em;
+  color: white;
+}
+
+.Links {
+  display: flex;
+  align-items: space-between;
+  justify-content: space-around;
+  width: 10vw;
+  height: 10vh;
+}
+
+.Navbar a {
+  display: flex;
+  align-items: center;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  margin: 0px;
+  font-size: 1.4em;
+  text-decoration: none;
+}
+
+.Navbar a.active {
+  display: flex;
+  align-items: center;
+  color: #f2f2f2;
+  background-color:#2e7dff;
+  text-align: center;
+  padding: 14px 16px;
+  margin: 0px;
+  font-size: 1.4em;
+  text-decoration: none;
+}
+
+.History-body {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 5vh;
+  justify-content: flex-start;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.History-body h4 {
+  margin: 1em;
+}
+
+.History {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 60vh;
+  width: 80vw;
+}
+
+.Spinner {
   height: 1.1em;
   margin: 0.5em;
 }
 
 .Loading-wrapper {
-  display:flex;
+  display: flex;
   align-items: center;
 }
 
@@ -47,14 +132,14 @@ p.Time {
 }
 
 .Result-wrapper {
-  display:flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
 .Result {
-  color:#2e7dff;
+  color: #2e7dff;
 }
 
 .Result-wrapper p {
@@ -71,13 +156,14 @@ p.Time {
 
 .Number-input {
   padding: 1em;
-  border-radius: .5em;
+  border-radius: 0.5em;
   color: #000;
 }
 
 .App-body {
   background-color: #282c34;
-  min-height: 100vh;
+  padding: 0px;
+  min-height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -91,9 +177,8 @@ p.Time {
   padding: 2em;
   display: flex;
   flex-direction: column;
-  align-items:center;
+  align-items: center;
   justify-content: center;
   font-size: calc(5px + 2vmin);
   color: #000;
 }
-

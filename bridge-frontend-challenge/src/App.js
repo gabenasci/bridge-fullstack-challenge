@@ -1,74 +1,29 @@
-import React, { useState, useEffect } from "react";
-import logo from "./logo-bridge.png";
-import "./App.css";
-import CalculatorForm from "./components/CalculatorForm";
-import CalculatedResult from "./components/CalculatedResult";
+import {useState} from 'react';
+import Home from './Home.js';
+import NavBar from './components/NavBar';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import CalculationList from './components/CalculationList';
 
 function App() {
-  const [result, setResult] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [responseTime, setResponseTime] = useState(null);
-  const [error, setError] = useState(null);
-
-  const resetLoading = () => {
-    setLoading(false)
-  }
-
-  const onCalculateHandler = (k) => {
-    let request = { 
-      "k" : k,
-      "result": null,
-      "time": null
-    };
-    console.log(JSON.stringify(request));
-    setLoading(true);
-    fetch("http://localhost:8080/calculate?input=" + k, {
-      method: "POST",
-      body: JSON.stringify(request),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => {
-        // console.log(response);
-        if(!response.ok && k) {
-          throw Error('Não foi possível comunicar com a API de cálculo.');
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setResult(data.result); 
-        setResponseTime(data.time);
-        setLoading(false);
-        setError(null);
-        if (!k) {
-          throw Error('Insira um valor válido para k.');
-        }
-      })
-      .catch(err => {
-        setLoading(false);
-        setError(err.message);
-      })
-  };
 
   return (
     <div className="App">
-      <body className="App-body">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h3>Desafio Fullstack Developer</h3>
-        <div className="Calculation">
-          <p>
-            Calcule abaixo o número de inteiros positivos <em>n</em> menores que{" "}
-            <em>k</em> para os quais <em>n</em> e <em>n+1</em> têm o mesmo
-            número de divisores positivos.
-          </p>
-          <CalculatorForm onCalculate={onCalculateHandler}></CalculatorForm>
-          <CalculatedResult result={result} loading={loading} onResult={resetLoading} time={responseTime} />
-          { error && <div>{ error }</div>}
-        </div>
-      </body>
+      <Router>
+        <NavBar />
+        <Switch>
+          <Route 
+            exact path="/"
+          >
+            <Home />
+          </Route>
+          <Route exact path="/history">
+            <CalculationList className="History" />
+          </Route>
+        </Switch>
+      </Router>
     </div>
-  );
+
+  )
 }
 
 export default App;
