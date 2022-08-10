@@ -20,7 +20,6 @@ function Home() {
       "result": null,
       "time": null
     };
-    console.log(JSON.stringify(request));
     setLoadingResult(true);
     fetch("http://localhost:8080/calculate?input=" + k, {
       method: "POST",
@@ -30,7 +29,6 @@ function Home() {
       },
     })
       .then((response) => {
-        // console.log(response);
         if(!response.ok && k) {
           throw Error('Não foi possível comunicar com a API de cálculo.');
         }

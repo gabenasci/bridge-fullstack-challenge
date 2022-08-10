@@ -29,6 +29,11 @@
   font-size: 0.8em;
 }
 
+strong {
+  padding-right: 1px;
+  color:#2e7dff;
+}
+
 .Calculation {
   padding: 1em;
   display: flex;

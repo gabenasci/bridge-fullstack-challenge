@@ -11,6 +11,7 @@ const CalculationList = () => {
   }
 
   useEffect(() => {
+    setLoadingHistory(true);
     fetch('http://localhost:8080/results')
       .then(response => {
         if(!response.ok){
@@ -20,34 +21,41 @@ const CalculationList = () => {
       })
       .then(data => {
         setCalculations(data);
+        setLoadingHistory(false);
       })
       .catch(err => {
         setError(err.message)
-      })
-      
-  }, [calculations])
+        setLoadingHistory(false);
+      })   
+  }, [])
 
   if (!loadingHistory) {
     return (
-      <body className="History-body">
+      <div className="History-body">
         <h2>Histórico</h2>
+        {error && <div>{ error }</div>}
         <div className="History">
           {calculations.map((calculation) => (
             <div key={calculation.k} className="Calc">
               <div className="Row">K: {calculation.k}</div>
               <div className="Row">Resultado: {calculation.result}</div>
-              <div className="Row">Tempo: {calculation.time}</div>
+              <div className="Row">Tempo: {calculation.time} ms</div>
               
             </div>
           ))}
         </div>
-      </body>
+      </div>
     );
   } else {
-    <div className="Loading-wrapper">
-      <img src={spinner} alt="loading..." className="Spinner"></img>
-      <p>Carregando...</p>
-    </div>;
+    return (
+      <div className="History-body">
+        <div className="Loading-wrapper">
+          <img src={spinner} alt="loading..." className="Spinner"></img>
+          <p>Carregando...</p>
+        </div>
+      </div>
+    )
+
   }
 };
 
